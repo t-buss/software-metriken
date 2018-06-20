@@ -31,3 +31,14 @@ wobei E die Anzahl der Kanten im Flussgraphen, N die Anzahl der Knoten und die A
 Eine Zusammenhangskomponente entspricht dabei einer Funktion oder Prozedur.
 
 Für diese Metrik gibt es Variationen, bei denen die Anzahl der unterscheidbaren Pfaden in Flussgraphen unterschiedlich berechnet wird.
+So lässt sich beispielsweise eine Switch-Anweisung entweder als ein einzelner Pfad sehen oder als so viele Pfade, wie es Case-Blöcke gibt.
+
+\subsection{FanIn und FanOut}
+Die Metriken "`FanIn"' und "`FanOut"' beschreiben die Anzahl der Variablen, die eine Funktion verwendet.
+FanIn ist die Anzahl der Variablen, die in die Funktion eingeben (sowohl als Parameter in der Funktionssignatur) als auch globale oder paket-lokale Variablen.
+Analog dazu ist FanOut die Anzahl der Variablen, die eine Funktion ändert.
+
+\subsection{OOP-spezifische Metriken}
+Eine Reihe von Metriken lassen sich nur in objekt-orientierten Sprachen erheben.
+Diese hängen meist mit der Vererbungshierarchie dieser Sprachen zusammen.
+Beispielsweise lässt sich die Tiefe des Vererbungsbaumes ("`Depth of inheritance tree"', DIT) oder die Anzahl Unterklassen für jede Klasse ("`Number of children"', NOC) messen.
