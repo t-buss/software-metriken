@@ -22,11 +22,16 @@ Fehler in komplexen Systemen zu finden gestaltet sich hingegen als sehr schwieri
 Kopplungsmaße beschreiben, wie sehr einzelne Komponenten voneinander abhängig sind.
 Hohe Kopplung ist negativ zu betrachten, da in einem solchen Fall eine Änderung der einen Komponente eine Änderung in einer anderen Komponente bedingt.
 Der betroffene Code sollte so klein wie möglich gehalten werden.
+Ein Beispiel für Kopplungsmaße ist die Anzahl der Unterklassen oder "`Number of Children (LOC)"'.
+Durch Vererbung wird die Unterklasse an die Oberklasse gekoppelt.
 
 Kopplungsmaße sind ein guter Indikator für die Wartbarkeit von Software-Systemen.
 Eine Betrachtung von Kopplung für die Findung von Fehlern ergibt daher Sinn.
 
-\subsubsection{Cohesion}
+\subsubsection{Kohäsion}
+Kohäsion beschreibt, inwieweit die Methoden und Variablen einer Klasse zueinander in Verbindung stehen.
+Eine Klasse sollte sich nach dem "`Single Responsibility Principle"' nur um eine Aufgabe kümmern.
+Geringe Kohäsion ist ein Anzeichen dafür, dass eine Klasse in mehrere aufgeteilt werden sollte.
 % Kohäsion
 % Inwiefern "passen" die Methoden und Variablen einer Klasse zueinander? Gibt es viele Methoden, die geteilte Variablen nicht benutzen? -> schwache Cohesion
 % In dem Fall sollte Klasse in zwei oder mehr Klassen aufgeteilt werden
