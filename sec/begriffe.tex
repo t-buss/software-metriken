@@ -18,10 +18,13 @@ Komplexitätsmaße als Indikatoren für Fehler zu verwenden ergibt Sinn.
 Je einfacher das System zu verstehen ist, desto weniger fehleranfällig ist es.
 Fehler in komplexen Systemen zu finden gestaltet sich hingegen als sehr schwierig.
 
-\subsubsection{Coupling}
-% Kopplung
-% Wie abhängig sind Komponenten voneinander? Besser simples Interface als vollständig abhängig von der Implementierung zu sein
-% Motivation: Code soll einfach zu ändern sein, betroffener Bereich einer Änderung möglichst klein halten
+\subsubsection{Kopplung}
+Kopplungsmaße beschreiben, wie sehr einzelne Komponenten voneinander abhängig sind.
+Hohe Kopplung ist negativ zu betrachten, da in einem solchen Fall eine Änderung der einen Komponente eine Änderung in einer anderen Komponente bedingt.
+Der betroffene Code sollte so klein wie möglich gehalten werden.
+
+Kopplungsmaße sind ein guter Indikator für die Wartbarkeit von Software-Systemen.
+Eine Betrachtung von Kopplung für die Findung von Fehlern ergibt daher Sinn.
 
 \subsubsection{Cohesion}
 % Kohäsion
