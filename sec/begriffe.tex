@@ -4,13 +4,19 @@ Bevor sich Hypothesen über den Zusammenhang zwischen Software-Metriken und Sich
 %TODO Unterschied zu Netzwerk-Metriken zur Sicherheit
 \subsection{Software-Metrik}
 
-\subsubsection{Complexity}
-% Komplexität
-% Große Zahl an Komponenten die miteinander interagieren, lokales Verhalten, sodass auf höherer Ebene kein Überblick herrscht
-% Definition schwierig/unmöglich, aber Charakterisierung möglich
-% Eine Möglichkeit: McCabe's Complexity: Anzahl unterschiedlicher Pfade innerhalb eines Programms
-% Komplexität != Kompliziertheit: Kompliziert heißt viele Schichten
-% Motivation: Das Gesamtsystem soll einfach zu verstehen sein
+\subsubsection{Komplexität}
+Komplexitätsmaße beschreiben, inwieweit die Komponenten eines Systems miteinander "`verflochten"' sind
+\footnote{Das Wort "`Komplexität"' heißt übersetzt ins Lateinische sogar "`mit verflochten"'}.
+Eine hohe Komplexität verursacht, dass man sich von einer höheren Abstraktionsebene keinen Überblick über das System machen kann
+\footnote{Komplex ist nicht das gleiche wie kompliziert. Komplizierte Systeme haben viele Abstraktionsebenen, die den Überblick erschweren. Einfach ausgedrückt bezieht sich "`komplex"' auf Verflechtungen und "`kompliziert"' auf Schichten.}.
+Den Begriff zu definieren fällt dabei schwer.
+Es lassen sich aber Maße finden, die Eigenschaften komplexer Systeme ausdrücken.
+Ein Beispiel eines solchen Maßes ist McCabe's Cyclomatic Complexity~\cite{mccabe1976}.
+Sie zählt die Anzahl der unterschiedlichen Kontrollflüsse innerhalb eines Programms.
+
+Komplexitätsmaße als Indikatoren für Fehler zu verwenden ergibt Sinn.
+Je einfacher das System zu verstehen ist, desto weniger fehleranfällig ist es.
+Fehler in komplexen Systemen zu finden gestaltet sich hingegen als sehr schwierig.
 
 \subsubsection{Coupling}
 % Kopplung
