@@ -5,8 +5,23 @@ Bevor sich Hypothesen über den Zusammenhang zwischen Software-Metriken und Sich
 \subsection{Software-Metrik}
 
 \subsubsection{Complexity}
+% Komplexität
+% Große Zahl an Komponenten die miteinander interagieren, lokales Verhalten, sodass auf höherer Ebene kein Überblick herrscht
+% Definition schwierig/unmöglich, aber Charakterisierung möglich
+% Eine Möglichkeit: McCabe's Complexity: Anzahl unterschiedlicher Pfade innerhalb eines Programms
+% Komplexität != Kompliziertheit: Kompliziert heißt viele Schichten
+% Motivation: Das Gesamtsystem soll einfach zu verstehen sein
+
 \subsubsection{Coupling}
+% Kopplung
+% Wie abhängig sind Komponenten voneinander? Besser simples Interface als vollständig abhängig von der Implementierung zu sein
+% Motivation: Code soll einfach zu ändern sein, betroffener Bereich einer Änderung möglichst klein halten
+
 \subsubsection{Cohesion}
+% Kohäsion
+% Inwiefern "passen" die Methoden und Variablen einer Klasse zueinander? Gibt es viele Methoden, die geteilte Variablen nicht benutzen? -> schwache Cohesion
+% In dem Fall sollte Klasse in zwei oder mehr Klassen aufgeteilt werden
+% Motivation: Single Resposibilty Principle
 
 \subsection{Sicherheitslücke}
 % Dienst (Service) (von außen wahrgenommenes Verhalten einer Komponente) ist korrekt -> Dienst erfüllt seine Funktion
