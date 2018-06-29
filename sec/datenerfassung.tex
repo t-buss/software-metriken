@@ -1,5 +1,12 @@
-\section{Erfassung der Daten}
+\section{Erfassung der Daten und Aufbereitung}
 \label{sec:erfassung}
 In diesem Abschnitt wird beleuchtet, wie die für die Verifikation der Hypothesen notwendigen Daten erfasst werden können.
+Gegebenenfalls müssen die Daten für eine Analyse ebenfalls vorverarbeitet werden, um einen brauchbaren Datensatz zu erhalten.
 Die Qualität der zugrunde liegenden Daten bestimmt die Aussagekraft, mit der die Hypothesen verifiziert oder verworfen werden können.
 %TODO Hinweis auf STATISCHE Codeanalyse und Metriken != Netzwerk-Metriken
+
+% Infos über Sicherheitslücken: Alves et al: Projektspezifische Security Advisores und CVEDetails, Bugtracker
+% Chowdhury und Zulkernine: Mozilla Foundation Security Advisores
+% Vorverarbeitung abhängig von Art der Entitäten, die analysiert werden sollen: Nur Files? Einfach! Klassen, Methoden? Parsing-Schritt notwendig
+% Alves et. al vergleichen mehrere Projekte: 1 C++ und 4 C Projekte -> Behandeln Unions und Structs wie Klassen!!! WTF! Vergleichbarkeit fragwürdig
+% Außerdem: Alves et. al vergleichen immer 2 Commits nachheinander (der Commit, der Bug fixed und den direkt davor). Mehrere Commits pro Bug sind denkbar, was wenn letzter nur Typo fixed?
