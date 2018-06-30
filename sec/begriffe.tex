@@ -33,14 +33,26 @@ Kohäsion beschreibt, inwieweit die Methoden und Variablen einer Klasse zueinand
 Eine hohe Kohäsion bewirkt, dass der Programmierer nicht zu viele Dinge gleichzeitig beachten muss.
 So sollte sich eine Klasse nach dem "`Single Responsibility Principle"' nur um eine Aufgabe oder ein Konzept kümmern.
 Geringe Kohäsion ist ein Anzeichen dafür, dass eine Klasse in mehrere aufgeteilt werden sollte.
+%TODO: Beispielmetrik für Kohäsion
 
 \subsection{Sicherheitslücke}
-% Dienst (Service) (von außen wahrgenommenes Verhalten einer Komponente) ist korrekt -> Dienst erfüllt seine Funktion
+Um den Begriff \emph{Sicherheitslücke} erklären zu können, muss zunächst der Begriff des \emph{Fehlers} und der Begriff der \emph{Sicherheit} erläutert werden.
 
+% Dienst (Service) (von außen wahrgenommenes Verhalten einer Komponente) ist korrekt -> Dienst erfüllt seine Funktion
 % Failure ~= Fehlschlag: Ereignis
 % Error ~= Fehler: Abweichung vom definierten Verhalten
 % Fault ~= Defekt: Grund für Abweichung
+Eine Komponente stellt anderen Komponenten einen Dienst bereit.
+Sollte dieser Dienst von dem definierten Verhalten der Komponente abweichen, so ist dies ein Fehler.
+Der Grund für diese Abweichung wird als Defekt bezeichnet.
 
 % Sicherheit: nicht nur Vertraulichkeit (keine nicht-autorisierte Weitergabe von vertraulichen Informationen), sondern Integrität und Verfügbarkeit
+Der Begriff \emph{Sicherheit} bezeichnet mehrere Eigenschaften.
+Oftmals wird bei Sicherheit nur an Vertraulichkeit gedacht, also die Verhinderung des Zugriffs auf vertraulichen Informationen durch Unbefugte.
+Aber auch die Integrität der Daten und die Verfügbarkeit des Systems gehören dazu.
 
 % Vulnerability ~= Sicherheitslücke, verursacht durch einen internen Defekt (vault), der externen Defekt (Bot oder "Hacker") Schaden verursachen lassen kann
+Eine Sicherheitslücke ist vorhanden, wenn ein interner Defekt einer Komponente einem externen Defekt die Möglichkeit bietet, eine oder mehrere Eigenschaften der Sicherheit zu verletzen.
+%TODO Zitatstelle einfügen!
+Ein externer Defekt kann sich auf viele Dinge beziehen, sowohl fehlerhafte Komponenten als auch unbefugte Personen.
+
