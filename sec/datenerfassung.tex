@@ -3,7 +3,23 @@
 In diesem Abschnitt wird beleuchtet, wie die für die Verifikation der Hypothesen notwendigen Daten erfasst werden können.
 Gegebenenfalls müssen die Daten für eine Analyse ebenfalls vorverarbeitet werden, um einen brauchbaren Datensatz zu erhalten.
 Die Qualität der zugrunde liegenden Daten bestimmt die Aussagekraft, mit der die Hypothesen verifiziert oder verworfen werden können.
-%TODO Hinweis auf STATISCHE Codeanalyse und Metriken != Netzwerk-Metriken
+
+Für die Analyse eignen sich Open Source Projekte,
+da diese sowohl den Quellcode als auch verschiedene Issue-Tracker,
+in denen Sicherheitslücken gelistet sind,
+öffentlich zugänglich machen.
+In \cite{chowdhury_zulkernine_2010} und \cite{chowdhury_zulkernine_2009} wird \emph{Mozilla Firefox} als Gegenstand einer Fallstudie verwendet.
+Die Festlegung auf ein einziges Projekt limitiert jedoch die Aussagekraft der Studie.
+Daher haben die Forscher in \cite{alves_et_al} mehrere Projekte für ihre Studie ausgewählt: 
+Mozilla Projekte (Firefox, Thunderbird und andere),
+den Linux Kernel,
+den \emph{Xen} Hypervisor,
+den Apache Webserver \texttt{httpd} und
+die GNU Bibliothek \texttt{glibc}.
+
+Für die statische Codeanalyse wird der Quellcode in verschiedenen Versionen benötigt: Vor und nach dem Beheben einer Sicherheitslücke.
+Auf jeder Version wird die Codeanalyse ausgeführt, um die Metriken zu berechnen.
+Durch die Unterschiede in den Metriken lässt sich ermitteln, was das Beheben einer Sicherheitslücke in den Metriken bewirkt.
 
 % Infos über Sicherheitslücken: Alves et al: Projektspezifische Security Advisores und CVEDetails, Bugtracker
 % Chowdhury und Zulkernine: Mozilla Foundation Security Advisores
