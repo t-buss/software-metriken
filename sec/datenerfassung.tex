@@ -20,7 +20,7 @@ die GNU Bibliothek \texttt{glibc}.
 Informationen über Sicherheitslücken lassen sich über sog. \emph{Security Advisories} erhalten.
 Diese listen entdeckte Bugs in der Software, die einen sicherheitsbezogenen Kontext haben.
 Ein Eintrag in einer dieser Advisories enthält Informationen über die Sicherheitslücke, eine Bewertung der Schwere dieser Lücke und einen Link zu dem entsprechenden Bug Tracker Eintrag.
-Abbildung~\ref{fig:mfsa} zeigt einen Eintrag auf der Mozilla Foundation Security Advisories Webseite.
+Abbildung~\ref{fig:mfsa} zeigt einen Eintrag auf der Mozilla Foundation Security Advisories Webseite, die von \cite{alves_et_al} und \cite{chowdhury_zulkernine_2010} verwendet werden.
 Für viele andere Projekte gibt ebenfalls Security Advisories.
 \begin{figure}
 	\includegraphics[width=\textwidth]{img/mfsa_example.png}
@@ -46,9 +46,15 @@ Der letzte Commit könnte beispielsweise nur "`Schönheitskorrekturen"' beinhalt
 Ebenso ist es denkbar, dass der Hauptzweig kurz vor Schließung der Sicherheitslücke gemerged wurde.
 Dann enthält dieser Commit potentiell sehr viele Änderungen, die nicht in Verbindung mit der Sicherheitslücke stehen.
 Damit wären die Metriken sehr verschieden.
+Die Forscher in \cite{chowdhury_zulkernine_2009} und \cite{chowdhury_zulkernine_2010} verwenden für ihre Studie Release-Versionen von Mozilla Firefox.
+Diese Herangehensweise ist kritisch zu betrachten, da damit die Ergebnisse der Codeanalyse verfälscht werden können.
+Release-Versionen beinhalten in der Regel viele Änderungen, sodass die Metriken keinen Bezug zur Sicherheitslücke haben.
 
-% Infos über Sicherheitslücken: Alves et al: Projektspezifische Security Advisores und CVEDetails, Bugtracker
-% Chowdhury und Zulkernine: Mozilla Foundation Security Advisores
-% Vorverarbeitung abhängig von Art der Entitäten, die analysiert werden sollen: Nur Files? Einfach! Klassen, Methoden? Parsing-Schritt notwendig
-% Alves et. al vergleichen mehrere Projekte: 1 C++ und 4 C Projekte -> Behandeln Unions und Structs wie Klassen!!! WTF! Vergleichbarkeit fragwürdig
-% Außerdem: Alves et. al vergleichen immer 2 Commits nachheinander (der Commit, der Bug fixed und den direkt davor). Mehrere Commits pro Bug sind denkbar, was wenn letzter nur Typo fixed?
+Die Erfassung der Metriken kann auf verschiedenen Ebenen erfolgen, beispielsweise auf Klassenebene oder Funktionsebene.
+Eine einfache Art stellt die Dateiebene dar.
+Sie ist universell für alle Arten von Software-Systemen.
+Für andere Ebenen ist es notwendig, die Dateien zu parsen.
+Unterschiedliche Sprachen bieten auch unterschiedliche Gruppierungsmechanismen an.
+In C gibt es beispielsweise keine Klassen.
+Deshalb werden in \cite{alves_et_al} den Projekte, die in C geschrieben wurden, \texttt{Structs} und \texttt{Unions} wie Klassen in C++ behandelt.
+Dies mindert allerdings die Vergleichbarkeit der Ergebnisse zwischen den Projekten, da diese Konstrukte gänzlich anderen Zwecken dienen und konzeptionell daher nicht vergleichbar sind.
