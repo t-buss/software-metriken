@@ -17,19 +17,35 @@ den \emph{Xen} Hypervisor,
 den Apache Webserver \texttt{httpd} und
 die GNU Bibliothek \texttt{glibc}.
 
-Für die statische Codeanalyse wird der Quellcode in verschiedenen Versionen benötigt: Vor und nach dem Beheben einer Sicherheitslücke.
-Auf jeder Version wird die Codeanalyse ausgeführt, um die Metriken zu berechnen.
-Durch die Unterschiede in den Metriken lässt sich ermitteln, was das Beheben einer Sicherheitslücke in den Metriken bewirkt.
-
 Informationen über Sicherheitslücken lassen sich über sog. \emph{Security Advisories} erhalten.
 Diese listen entdeckte Bugs in der Software, die einen sicherheitsbezogenen Kontext haben.
-Ein Eintrag in einer dieser Advisories enthält Informationen über die Sicherheitslücke, eine Bewertung der Schwere dieser Lücke und einen Link zum Bug Tracker Eintrag.
-Abbildung~\ref{fig:mfsa} zeigt einen Eintrag auf der Mozilla Foundation Security Advisories Website.
+Ein Eintrag in einer dieser Advisories enthält Informationen über die Sicherheitslücke, eine Bewertung der Schwere dieser Lücke und einen Link zu dem entsprechenden Bug Tracker Eintrag.
+Abbildung~\ref{fig:mfsa} zeigt einen Eintrag auf der Mozilla Foundation Security Advisories Webseite.
+Für viele andere Projekte gibt ebenfalls Security Advisories.
 \begin{figure}
 	\includegraphics[width=\textwidth]{img/mfsa_example.png}
 	\caption{Beispieleintrag auf der Mozilla Foundation Security Advisories Webseite}
 	\label{fig:mfsa}
 \end{figure}
+
+Für die statische Codeanalyse wird der Quellcode in verschiedenen Versionen benötigt: Vor und nach dem Beheben einer Sicherheitslücke.
+Auf jeder Version wird die Codeanalyse ausgeführt, um die Metriken zu berechnen.
+Durch die Unterschiede in den Metriken lässt sich ermitteln, was das Beheben einer Sicherheitslücke in den Metriken bewirkt.
+
+Über die Security Advisories und den Bug Trackern lassen sich die Versionen bzw. Commits finden, in denen die Sicherheitslücken geschlossen wurden.
+In \cite{alves_et_al} und \cite{chowdhury_zulkernine_2009} werden dafür eigene Parser-Programme verwendet, die die gelisteten Sicherheitslücken durchsuchen und die Referenzen auf die Versionen bzw. Commits der Behebung ermitteln.
+Da die Einträge nicht immer konsistent gehalten werden, erschwert dies die Arbeit der Parser.
+In \cite{alves_et_al} konnten daher nur 55\% der Einträge in den untersuchten Projekten verarbeitet werden.
+Das lässt viele Sicherheitslücken aus und mindert daher die Menge geeigneter Daten.
+
+Ist die Version einer Software gefunden, in der eine Sicherheitslücke geschlossen wurde, kann die statische Codeanalyse durchgeführt werden.
+Für einen Vergleich der Metriken muss eine andere Version ebenfalls analysiert werden, bestenfalls eben der Commit, der direkt vor dem Schließen der Lücke.
+Die Forscher in \cite{alves_et_al} nehmen hierfür den Commit, der sich direkt davor in der Historie verwendet.
+Es besteht allerdings die Möglichkeit, dass eine Lücke in mehreren Commits bearbeitet wird.
+Der letzte Commit könnte beispielsweise nur "`Schönheitskorrekturen"' beinhalten, die keinerlei Auswirkungen auf die Metriken haben.
+Ebenso ist es denkbar, dass der Hauptzweig kurz vor Schließung der Sicherheitslücke gemerged wurde.
+Dann enthält dieser Commit potentiell sehr viele Änderungen, die nicht in Verbindung mit der Sicherheitslücke stehen.
+Damit wären die Metriken sehr verschieden.
 
 % Infos über Sicherheitslücken: Alves et al: Projektspezifische Security Advisores und CVEDetails, Bugtracker
 % Chowdhury und Zulkernine: Mozilla Foundation Security Advisores
