@@ -21,6 +21,16 @@ Für die statische Codeanalyse wird der Quellcode in verschiedenen Versionen ben
 Auf jeder Version wird die Codeanalyse ausgeführt, um die Metriken zu berechnen.
 Durch die Unterschiede in den Metriken lässt sich ermitteln, was das Beheben einer Sicherheitslücke in den Metriken bewirkt.
 
+Informationen über Sicherheitslücken lassen sich über sog. \emph{Security Advisories} erhalten.
+Diese listen entdeckte Bugs in der Software, die einen sicherheitsbezogenen Kontext haben.
+Ein Eintrag in einer dieser Advisories enthält Informationen über die Sicherheitslücke, eine Bewertung der Schwere dieser Lücke und einen Link zum Bug Tracker Eintrag.
+Abbildung~\ref{fig:mfsa} zeigt einen Eintrag auf der Mozilla Foundation Security Advisories Website.
+\begin{figure}
+	\includegraphics[width=\textwidth]{img/mfsa_example.png}
+	\caption{Beispieleintrag auf der Mozilla Foundation Security Advisories Webseite}
+	\label{fig:mfsa}
+\end{figure}
+
 % Infos über Sicherheitslücken: Alves et al: Projektspezifische Security Advisores und CVEDetails, Bugtracker
 % Chowdhury und Zulkernine: Mozilla Foundation Security Advisores
 % Vorverarbeitung abhängig von Art der Entitäten, die analysiert werden sollen: Nur Files? Einfach! Klassen, Methoden? Parsing-Schritt notwendig
