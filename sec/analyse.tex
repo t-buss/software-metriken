@@ -40,11 +40,41 @@ Die Linien zeigen verschiedene Release-Versionen von Mozilla Firefox.
 Es lässt sich erkenne, dass die Korrelationsmuster über Versionen hinweg konsistent sind\cite{chowdhury_zulkernine_2009}.
 
 \subsection{Klassifikatoren}
-Mithilfe der Metriken lassen sich auch Klassifikatoren erstellen.
+Mithilfe der Metriken lassen sich auch Klassifikatoren (englisch: \emph{predictors}) erstellen.
 Dieser Ansatz wird in \cite{chowdhury_zulkernine_2009} verwendet, um ein Framework für die Vorhersage von Sicherheitslücken zu entwickeln.
+Abbildung \ref{fig:framework} zeigt die Architektur dieses Frameworks.
+\begin{figure}
+	\includegraphics[width=\textwidth]{img/framework.png}
+	\caption{Framework für die Vorhersage von Sicherheitslücken aus \cite{chowdhury_zulkernine_2009}}
+	\label{fig:framework}
+\end{figure}
 Die Herangehensweise unterscheidet sich dahingehend von der Berechnung der Korrelationen, dass die in anderen Studien festgestellte Korrelation der Metriken mit Sicherheitslücken nicht verwendet wurde, um Vorhersagen zu erstellen.
 
 Das Problem wird als Klassifizierungsproblem auf Dateiebene aufgefasst:
 Entweder eine Datei ist anfällig für Sicherheitslücken oder nicht.
 Für die Klassifikatoren kommen verschiedene Techniken in Frage.
 Beispiele sind \emph{C4.5 Entscheidungsbäume}\cite{decision_trees}, die Weiterentwicklung \emph{Random Forests} und der \emph{Bayes-Klassifikator}.
+Die in \cite{chowdhury_zulkernine_2009} für die Generierung der Klassifikatoren verwendete Bibliothek ist \emph{Waikato Environment for Knowledge Analysis (WEKA)}\footnote{WEKA Webseite: \url{https://www.cs.waikato.ac.nz/ml/weka/}} der Universität von Waikato, Neuseeland.
+Sie ist Open Source und in Java implementiert, sodass sie einfach und vielseitig eingesetzt werden kann.
+
+Für die Generierung ist es notwendig, einen ausbalancierten Datensatz zu verwenden, um einseitige Klassifikatoren auszuschließen.
+Anschließend können die Klassifikatoren generiert werden.
+Ein Verfahren dafür ist \emph{Cross Validation}\cite{chowdhury_zulkernine_2009}.
+Der Datensatz wird in 10 "`Bins"' aufgeteilt, wovon 9 zum Trainieren des Klassifikators und einer zum Testen der Vorhersagen benutzt werden.
+Dieser Vorgang wird einige Male wiederholt.
+
+Die generierten Klassifikatoren müssen anschließend noch auf ihre Qualität überprüft werden.
+In \cite{chowdhury_zulkernine_2009} werden dafür die folgenden Maße verwendet:
+\begin{equation}
+	Accuracy = \frac{TP+TN}{TP+FP+TN+FN}
+\end{equation}
+\begin{equation}
+	Recall = \frac{TP}{TP+FN}
+\end{equation}
+\begin{equation}
+	FN rate = \frac{FN}{TP+FN}
+\end{equation}
+Dabei ist \emph{TP} (true positives) die Anzahl der korrekt erkannten Sicherheitslücken,
+\emph{TN} (true negatives) die Anzahl der korrekt als ohne Lücke erkannten Dateien,
+\emph{FP} (false positives) die Anzahl der fälschlicherweise erkannten Sicherheitslücken und
+\emph{FN} (false negatives) die Anzahl der nicht erkannten Sicherheitslücken.
