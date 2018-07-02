@@ -59,6 +59,12 @@ In C gibt es beispielsweise keine Klassen.
 Deshalb werden in \cite{alves_et_al} den Projekte, die in C geschrieben wurden, \texttt{Structs} und \texttt{Unions} wie Klassen in C++ behandelt.
 Dies mindert allerdings die Vergleichbarkeit der Ergebnisse zwischen den Projekten, da diese Konstrukte gänzlich anderen Zwecken dienen und konzeptionell daher nicht vergleichbar sind.
 
+Bei Verwendung der Dateiebene für die Erfassung der Metriken muss bedacht werden, wie sich der Wert einer Datei aus den analysierten Elementen zusammen setzt.
+Befinden sich in einer Datei beispielsweise zwei Klassen mit unterschiedlichen Metrik-Werten, müssen diese Werte zusammengefasst werden.
+Eine Möglichkeit die Werte zusammenzufassen ist das arithmetische Mittel zu berechnen~\cite{chowdhury_zulkernine_2009}.
+Alternativ dazu kann man auch das Maximum bilden.
+Analoges gilt bei der Erfassung von Metriken auf Klassenebene unter Einbeziehung der jeweiligen Methoden der Klasse.
+
 Die Wahl des Programms zur Berechnung der Metriken hängt von der Analyse ab, die anschließenden mit den Metriken vorgenommen werden sollen.
 In den Studien von \cite{alves_et_al} und \cite{chowdhury_zulkernine_2009} kam dafür das Tool \emph{Understand}\footnote{Understand Webseite: \url{https://scitools.com/features/}} zum Einsatz.
 Damit konnten alle benötigten Metriken für die Analyse erfasst werden, wenn auch einige wünschenswerte Metriken fehlten.
