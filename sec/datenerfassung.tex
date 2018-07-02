@@ -59,6 +59,14 @@ In C gibt es beispielsweise keine Klassen.
 Deshalb werden in \cite{alves_et_al} den Projekte, die in C geschrieben wurden, \texttt{Structs} und \texttt{Unions} wie Klassen in C++ behandelt.
 Dies mindert allerdings die Vergleichbarkeit der Ergebnisse zwischen den Projekten, da diese Konstrukte gänzlich anderen Zwecken dienen und konzeptionell daher nicht vergleichbar sind.
 
+\begin{figure}
+	\includegraphics[width=\textwidth]{img/vulnerability_distribution.png}
+	\caption{Verteilung der Anzahl der Sicherheitslücken \cite{chowdhury_zulkernine_2009}}
+	\label{fig:vulnerability_distribution}
+\end{figure}
+Abbildung \ref{fig:vulnerability_distribution} aus \cite{chowdhury_zulkernine_2009} zeigt, wie viele Sicherheitslücken in einer betroffenen Datei auftauchen.
+Es ist zu erkennen, dass der größte Teil der betroffenen Dateien lediglich eine Sicherheitslücke aufweisen.
+
 Bei Verwendung der Dateiebene für die Erfassung der Metriken muss bedacht werden, wie sich der Wert einer Datei aus den analysierten Elementen zusammen setzt.
 Befinden sich in einer Datei beispielsweise zwei Klassen mit unterschiedlichen Metrik-Werten, müssen diese Werte zusammengefasst werden.
 Eine Möglichkeit die Werte zusammenzufassen ist das arithmetische Mittel zu berechnen~\cite{chowdhury_zulkernine_2009}.
