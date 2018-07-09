@@ -1,43 +1,65 @@
 \section{Analyse}
 \label{sec:analyse}
 Nachdem ein geeigneter Datensatz erfasst wurde, können die Daten analysiert werden.
-Für die Analyse gibt es zwei wesentliche Herangehensweisen: Korrelationsmaße und Klassifikatoren.
+Für die Analyse gibt es zwei wesentliche Herangehensweisen: die Betrachtung von Korrelationsmaße und Erstellung von Klassifikatoren.
 Zuvor sollte festgelegt werden, welche Metriken für die Analyse verwendet werden sollen.
-%TODO Medeiros et. al versuchen, die besten Metriken herauszufinden!
 % Informational approach (Wo fließen Daten hin?) vs. structual approach (Wer ruft wen auf?)
 
 \subsection{Wahl der Metriken}
 Die Auswahl der Metriken ist vielfältig.
 In \cite{alves_et_al} werden insgesamt 27 Metriken für Funktionen berechnet.
-Einige davon sind CCC-Metriken\footnote{Die Metriken sind jedoch nicht in die Komplexität, Kopplung und Kohäsion eingeteilt.}, andere beziehen sich auf die Anzahl der Codezeilen oder auf das Verhältnis von Quellcode-Kommentaren zu Codezeilen.
+Einige davon sind CCC-Metriken, andere beziehen sich auf die Anzahl der Codezeilen oder auf das Verhältnis von Quellcode-Kommentaren zu Codezeilen.
 In der Studie aus \cite{chowdhury_zulkernine_2009} werden 21 Metriken berechnet.
 Die Forscher teilen dabei die Metriken sowohl in die CCC-Klassen, als auch in Code-Level und Design-Level ein.
 Unter Design-Level-Metriken versteht man dabei solche, die nach dem Entwurf der Software (beispielsweise anhand eines UML-Klassendiagramms) berechnet werden können.
-Implementierungsspezifische Metriken wie die Anzahl Code-Zeilen bezeichnen sich als Code-Level-Metriken.
-Abbildung \ref{fig:chowdhury_metrics} zeigt einen Ausschnitt aus \cite{chowdhury_zulkernine_2010}.
-Zu sehen sind die Bezeichnung und englische Beschreibungen für die Komplexitätsmetriken.
-\begin{figure}
-	\includegraphics[width=\textwidth]{img/chowdhury_metrics.png}
+Implementierungsspezifische Metriken, wie der Anzahl Code-Zeilen, bezeichnen sich als Code-Level-Metriken.
+Abbildung \ref{table1} zeigt einen Ausschnitt aus der Arbeit von Chowdhury und Zulkernine~\cite{chowdhury_zulkernine_2010}.
+Zu sehen sind die englische Bezeichnungen und Beschreibungen für die Komplexitätsmetriken.
+
+\begin{table}
 	\caption{Auszug aus \cite{chowdhury_zulkernine_2010}; Tabelle mit den verwendeten Metriken.}
-	\label{fig:chowdhury_metrics}
-\end{figure}
+	\label{table1}
+	\begin{tabular}{|p{1.6cm}|p{10.4cm}|}
+		\hline
+		Metrics & Description and Rationale  \\
+		\hline
+		McCabe's & McCabe's cyclomatic complexity: the number of independent paths through a program unit (i.e., number of decision statements plus one).
+		For a file or class, it is the average cyclomatic complexity of the functions defined in the file or class. The higher this metric the more likely
+		an entity is to be difficult to test and maintain without error.\\
+		\hline
+		Modified & Modified cyclomatic complexity: identical to cyclomatic complexity except that each case statement is not counted; the entire switch statement counts as 1.\\
+		\hline
+		Strict & Strict cyclomatic Complexity: identical to cyclomatic complexity except that the AND (\&\& in C/C++) and OR (|| in C/C++) logical operators are also counted as 1.\\
+		\hline
+		Essential & Essential cyclomatic complexity: a measure of the code structuredness by counting cyclomatic complexity after iteratively replacing all structured programming primitives with a single statement.\\
+		\hline
+		Nesting & Nesting complexity: the maximum nesting level of control constructs (if, while, for, switch, etc.) in the function. Highly nested control	structures might make a program entity complex and hence difficult to comprehend by a programmer.\\
+		\hline
+		SLOC & Source Line Of Code: the number of executable lines of source code. Although SLOC measures size, prior research has found that SLOC highly correlates with complexity.\\
+		\hline
+		NOC & Number Of Children (NOC): the number of immediate sub-classes of a class or the count of derived classes. If class CA inherits class CB, then	CB is the base class and CA is the derived class. In other words, CA is the children of class CB, and CB is the parent of class CB. NOC measures inheritance complexity.\\
+		\hline
+		CBC & Count of Base Classes: the number of base classes. Like NOC, CBC measures inheritance complexity.\\
+		\hline
+	\end{tabular}
+\end{table}
 
 \subsection{Korrelationsmaße}
 Zur Überprüfung der Hypothesen eigen sich Korrelationsmaße.
 Die Behebung einer Sicherheitslücke müsste eine Verbesserung der CCC-Metriken nach sich ziehen.
-Ein mögliches Maß für die Korrelation ist Spearmans Rangkorrelationskoeffizient~\cite{alves_et_al,chowdhury_zulkernine_2010}, da dieses keine Annahmen zur Verteilung macht.
+Ein mögliches Maß für die Korrelation ist Spearmans Rangkorrelationskoeffizient~\cite{alves_et_al,chowdhury_zulkernine_2010}, da dieser keine Annahmen zur Verteilung macht.
 Der Spearman Korrelationskoeffizient (kurz: die Korrelation) ist ein Wert zwischen -1 und +1, wobei -1 eine stark negative und +1 eine stark positive Korrelation ausdrückt.
 Die Signifikanz der Korrelation wird mit dem p-Wert ausgerückt.
 Ein p-Wert kleiner 0.05 wird als statistisch signifikant gewertet.
 Weitere Techniken, die beispielsweise in \cite{alves_et_al} verwendet werden, sind der zweiseitige t-Test, Konfidenzintervalle und der Wilcoxon Rangsummentest.
 \begin{figure}
 	\includegraphics[width=\textwidth]{img/vulnerability_correlations.png}
-	\caption{Korrelationen mit Sicherheitslücken zu verschiedenen Metriken}
+	\caption{Korrelationen mit Sicherheitslücken zu verschiedenen Metriken~\cite{chowdhury_zulkernine_2009}.}
 	\label{fig:correlations}
 \end{figure}
-Abbildung \ref{fig:correlations} aus \cite{chowdhury_zulkernine_2009} zeigt die Korrelation mit Sicherheitslücken zu verschiedenen Metriken.
+Abbildung \ref{fig:correlations} aus der Arbeit von Chowdhury und Zulkernine zeigt die Korrelation mit Sicherheitslücken zu verschiedenen Metriken~\cite{chowdhury_zulkernine_2009}.
 Die Linien zeigen verschiedene Release-Versionen von Mozilla Firefox.
-Es lässt sich erkenne, dass die Korrelationsmuster über Versionen hinweg konsistent sind\cite{chowdhury_zulkernine_2009}.
+Es lässt sich erkennen, dass die Korrelationsmuster über Versionen hinweg konsistent sind\cite{chowdhury_zulkernine_2009}.
 
 \subsection{Klassifikatoren}
 Mithilfe der Metriken lassen sich auch Klassifikatoren (englisch: \emph{predictors}) erstellen.
@@ -54,7 +76,7 @@ Die Herangehensweise unterscheidet sich dahingehend von der Berechnung der Korre
 Das Problem wird als Klassifizierungsproblem auf Dateiebene aufgefasst:
 Entweder eine Datei ist anfällig für Sicherheitslücken oder nicht.
 Für die Klassifikatoren kommen verschiedene Techniken in Frage.
-Beispiele sind \emph{C4.5 Entscheidungsbäume}\cite{decision_trees}, die Weiterentwicklung \emph{Random Forests} und der \emph{Bayes-Klassifikator}.
+Beispiele sind \emph{C4.5 Entscheidungsbäume}\cite{decision_trees}, die Weiterentwicklung \emph{Random Forests} und der \emph{Bayes Klassifikator}.
 Die in \cite{chowdhury_zulkernine_2009} für die Generierung der Klassifikatoren verwendete Bibliothek ist \emph{Waikato Environment for Knowledge Analysis (WEKA)}\footnote{WEKA Webseite: \url{https://www.cs.waikato.ac.nz/ml/weka/}} der Universität von Waikato, Neuseeland.
 Sie ist Open Source und in Java implementiert, sodass sie einfach und vielseitig eingesetzt werden kann.
 
@@ -65,7 +87,7 @@ Der Datensatz wird in 10 "`Bins"' aufgeteilt, wovon 9 zum Trainieren des Klassif
 Dieser Vorgang wird einige Male wiederholt.
 
 Die generierten Klassifikatoren müssen anschließend noch auf ihre Qualität überprüft werden.
-In \cite{chowdhury_zulkernine_2009} werden dafür die folgenden Maße verwendet:
+Chowdhury und Zulkernine verwenden dafür die folgenden Maße~\cite{chowdhury_zulkernine_2009}:
 \begin{equation}
 	Accuracy = \frac{TP+TN}{TP+FP+TN+FN}
 \end{equation}

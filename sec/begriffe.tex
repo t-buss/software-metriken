@@ -17,7 +17,7 @@ Eine hohe Komplexität verursacht, dass man sich von einer höheren Abstraktions
 \footnote{Komplex ist nicht das Gleiche wie kompliziert. Komplizierte Systeme haben viele Abstraktionsebenen, die den Überblick erschweren. Einfach ausgedrückt bezieht sich "`komplex"' auf Verflechtungen und "`kompliziert"' auf Schichten.}.
 Den Begriff zu definieren fällt dabei schwer.
 Es lassen sich aber Maße finden, die Eigenschaften komplexer Systeme ausdrücken.
-Ein Beispiel eines solchen Maßes ist McCabe's Cyclomatic Complexity~\cite{mccabe1976}.
+Ein Beispiel eines solchen Maßes ist \textit{McCabe's Cyclomatic Complexity}~\cite{mccabe1976}.
 Sie zählt die Anzahl der unterschiedlichen Kontrollflüsse innerhalb eines Programms.
 
 Komplexitätsmaße als Indikatoren für Fehler zu verwenden ergibt Sinn.
@@ -28,7 +28,7 @@ Fehler in komplexen Systemen zu finden gestaltet sich hingegen als sehr schwieri
 Kopplungsmaße beschreiben, wie sehr einzelne Komponenten voneinander abhängig sind.
 Hohe Kopplung ist negativ zu betrachten, da in einem solchen Fall eine Änderung der einen Komponente eine Änderung in einer anderen Komponente bedingt.
 Der betroffene Code sollte so klein wie möglich gehalten werden.
-Ein Beispiel für Kopplungsmaße ist die Anzahl der Unterklassen oder "`Number of Children (LOC)"'.
+Ein Beispiel für Kopplungsmaße ist die Anzahl der Unterklassen oder "`Number of Children (NOC)"'.
 Durch Vererbung wird die Unterklasse an die Oberklasse gekoppelt.
 
 Kopplungsmaße sind ein guter Indikator für die Wartbarkeit von Software-Systemen.
@@ -39,7 +39,7 @@ Kohäsion beschreibt, inwieweit die Methoden und Variablen einer Klasse zueinand
 Eine hohe Kohäsion bewirkt, dass der Programmierer nicht zu viele Dinge gleichzeitig beachten muss.
 So sollte sich eine Klasse nach dem "`Single Responsibility Principle"' nur um eine Aufgabe oder ein Konzept kümmern.
 Geringe Kohäsion ist ein Anzeichen dafür, dass eine Klasse in mehrere aufgeteilt werden sollte.
-%TODO: Beispielmetrik für Kohäsion
+Ein Beispiel für ein Kohäsionsmaß ist "`Lack of cohesion of methods (LCOM)"', in dem die Anzahl der Variablen, Methoden und Methoden, die diese Variablen verwenden, miteinander verrechnet werden.
 
 \subsection{Sicherheitslücke}
 Um den Begriff \emph{Sicherheitslücke} erklären zu können, müssen zunächst die Begriffe des \emph{Fehlers} und der \emph{Sicherheit} erläutert werden.
@@ -58,11 +58,10 @@ Oftmals wird bei Sicherheit nur an Vertraulichkeit gedacht, also die Verhinderun
 Aber auch die Integrität der Daten und die Verfügbarkeit des Systems gehören dazu.
 
 % Vulnerability ~= Sicherheitslücke, verursacht durch einen internen Defekt (vault), der externen Defekt (Bot oder "Hacker") Schaden verursachen lassen kann
-Eine Sicherheitslücke ist vorhanden, wenn ein interner Defekt einer Komponente einem externen Defekt die Möglichkeit bietet, eine oder mehrere Eigenschaften der Sicherheit zu verletzen.
-%TODO Zitatstelle einfügen!
-Ein externer Defekt kann sich auf viele Dinge beziehen, sowohl fehlerhafte Komponenten als auch unbefugte Personen.
+Eine Sicherheitslücke ist vorhanden, wenn ein interner Defekt einer Komponente einem externen Defekt die Möglichkeit bietet, eine oder mehrere Eigenschaften der Sicherheit zu verletzen~\cite{basics}.
+Ein externer Defekt kann sich sowohl auf fehlerhafte Komponenten als auch unbefugte Personen beziehen.
 
 Sicherheitslücken treten immer wieder in Software-Systemen auf.
 Sie entstehen durch menschliche Fehler während der Entwurfs-, Entwicklungs- und Deployment-Phasen eines Systems, insbesondere, wenn eine ungünstige Architektur die Verständlichkeit einer Komponente erschwert.
 Eine allumfassende Planung zum Ausschluss von Sicherheitslücken ist praktisch unmöglich.
-Daher muss auch neben der vorangehenden Planung eines System auch während der Entwicklung überprüft werden, ob Sicherheitslücken vorliegen.
+Daher muss neben der vorangehenden Planung eines System auch während der Entwicklung überprüft werden, ob Sicherheitslücken vorliegen.

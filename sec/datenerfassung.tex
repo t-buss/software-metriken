@@ -8,7 +8,7 @@ Für die Analyse eignen sich Open Source Projekte,
 da diese sowohl den Quellcode als auch verschiedene Issue-Tracker,
 in denen Sicherheitslücken gelistet sind,
 öffentlich zugänglich machen.
-In \cite{chowdhury_zulkernine_2010} und \cite{chowdhury_zulkernine_2009} wird \emph{Mozilla Firefox} als Gegenstand einer Fallstudie verwendet.
+In den Arbeiten von Chowdhury und Zulkernine\cite{chowdhury_zulkernine_2010,chowdhury_zulkernine_2009} wird \emph{Mozilla Firefox} als Gegenstand der Fallstudien verwendet.
 Die Festlegung auf ein einziges Projekt limitiert jedoch die Aussagekraft der Studie.
 Daher haben die Forscher in \cite{alves_et_al} mehrere Projekte für ihre Studie ausgewählt: 
 Mozilla Projekte (Firefox, Thunderbird und andere),
@@ -18,28 +18,28 @@ den Apache Webserver \texttt{httpd} und
 die GNU Bibliothek \texttt{glibc}.
 
 Informationen über Sicherheitslücken lassen sich über sog. \emph{Security Advisories} erhalten.
-Diese listen entdeckte Bugs in der Software, die einen sicherheitsbezogenen Kontext haben.
-Ein Eintrag in einer dieser Advisories enthält Informationen über die Sicherheitslücke, eine Bewertung der Schwere dieser Lücke und einen Link zu dem entsprechenden Bug Tracker Eintrag.
-Abbildung~\ref{fig:mfsa} zeigt einen Eintrag auf der Mozilla Foundation Security Advisories Webseite, die von \cite{alves_et_al} und \cite{chowdhury_zulkernine_2010} verwendet werden.
-Für viele andere Projekte gibt ebenfalls Security Advisories.
+Diese listen entdeckte Bugs in der Software auf, die einen sicherheitsbezogenen Kontext haben.
+Ein Eintrag in einer diesem Advisories enthält Informationen über die Sicherheitslücke, eine Bewertung der Schwere dieser Lücke und einen Link zu dem entsprechenden Bug-Tracker-Eintrag.
+Abbildung~\ref{fig:mfsa} zeigt einen Eintrag auf der \textit{Mozilla Foundation Security Advisories}\footnote{\url{https://www.mozilla.org/en-US/security/advisories/}} Webseite, die von \cite{alves_et_al} und \cite{chowdhury_zulkernine_2010} verwendet werden.
+Für viele andere Projekte existieren ebenfalls Security Advisories.
 \begin{figure}
 	\includegraphics[width=\textwidth]{img/mfsa_example.png}
-	\caption{Beispieleintrag auf der Mozilla Foundation Security Advisories Webseite}
+	\caption{Beispieleintrag auf der \textit{Mozilla Foundation Security Advisories} Webseite}
 	\label{fig:mfsa}
 \end{figure}
 
-Für die statische Codeanalyse wird der Quellcode in verschiedenen Versionen benötigt: Vor und nach dem Beheben einer Sicherheitslücke.
-Auf jeder Version wird die Codeanalyse ausgeführt, um die Metriken zu berechnen.
+Für die statische Codeanalyse wird der Quellcode in zwei Versionen benötigt, nämlich vor und nach dem Beheben einer Sicherheitslücke.
+Auf beiden Version wird die Codeanalyse ausgeführt, um die Metriken zu berechnen.
 Durch die Unterschiede in den Metriken lässt sich ermitteln, was das Beheben einer Sicherheitslücke in den Metriken bewirkt.
 
 Über die Security Advisories und den Bug Trackern lassen sich die Versionen bzw. Commits finden, in denen die Sicherheitslücken geschlossen wurden.
-In \cite{alves_et_al} und \cite{chowdhury_zulkernine_2009} werden dafür eigene Parser-Programme verwendet, die die gelisteten Sicherheitslücken durchsuchen und die Referenzen auf die Versionen bzw. Commits der Behebung ermitteln.
+In \cite{alves_et_al} und \cite{chowdhury_zulkernine_2009} werden dafür eigene Parser-Programme verwendet, die die aufgelisteten Sicherheitslücken durchsuchen und die Referenzen auf die Versionen bzw. Commits der Behebungen ermitteln.
 Da die Einträge nicht immer konsistent gehalten werden, erschwert dies die Arbeit der Parser.
 In \cite{alves_et_al} konnten daher nur 55\% der Einträge in den untersuchten Projekten verarbeitet werden.
 Das lässt viele Sicherheitslücken aus und mindert daher die Menge geeigneter Daten.
 
 Ist die Version einer Software gefunden, in der eine Sicherheitslücke geschlossen wurde, kann die statische Codeanalyse durchgeführt werden.
-Für einen Vergleich der Metriken muss eine andere Version ebenfalls analysiert werden, bestenfalls eben der Commit, der direkt vor dem Schließen der Lücke.
+Für einen Vergleich der Metriken muss eine andere Version ebenfalls analysiert werden, bestenfalls der Commit, der direkt vor dem Schließen der Lücke steht.
 Die Forscher in \cite{alves_et_al} nehmen hierfür den Commit, der sich direkt davor in der Historie verwendet.
 Es besteht allerdings die Möglichkeit, dass eine Lücke in mehreren Commits bearbeitet wird.
 Der letzte Commit könnte beispielsweise nur "`Schönheitskorrekturen"' beinhalten, die keinerlei Auswirkungen auf die Metriken haben.
@@ -56,7 +56,7 @@ Sie ist universell für alle Arten von Software-Systemen.
 Für andere Ebenen ist es notwendig, die Dateien zu parsen.
 Unterschiedliche Sprachen bieten auch unterschiedliche Gruppierungsmechanismen an.
 In C gibt es beispielsweise keine Klassen.
-Deshalb werden in \cite{alves_et_al} den Projekte, die in C geschrieben wurden, \texttt{Structs} und \texttt{Unions} wie Klassen in C++ behandelt.
+Deshalb wird in der Arbeit von Alves et al bei den Projekte, die in C geschrieben wurden, \texttt{Structs} und \texttt{Unions} wie Klassen in C++ behandelt.
 Dies mindert allerdings die Vergleichbarkeit der Ergebnisse zwischen den Projekten, da diese Konstrukte gänzlich anderen Zwecken dienen und konzeptionell daher nicht vergleichbar sind.
 
 \begin{figure}
@@ -65,14 +65,14 @@ Dies mindert allerdings die Vergleichbarkeit der Ergebnisse zwischen den Projekt
 	\label{fig:vulnerability_distribution}
 \end{figure}
 Abbildung \ref{fig:vulnerability_distribution} aus \cite{chowdhury_zulkernine_2009} zeigt, wie viele Sicherheitslücken in einer betroffenen Datei auftauchen.
-Es ist zu erkennen, dass der größte Teil der betroffenen Dateien lediglich eine Sicherheitslücke aufweisen.
+Es ist zu erkennen, dass der größte Teil der betroffenen Dateien lediglich eine Sicherheitslücke aufweist.
 
-Bei Verwendung der Dateiebene für die Erfassung der Metriken muss bedacht werden, wie sich der Wert einer Datei aus den analysierten Elementen zusammen setzt.
+Bei Verwendung der Dateiebene für die Erfassung der Metriken muss bedacht werden, wie sich der Wert einer Datei aus den analysierten Elementen zusammensetzt.
 Befinden sich in einer Datei beispielsweise zwei Klassen mit unterschiedlichen Metrik-Werten, müssen diese Werte zusammengefasst werden.
 Eine Möglichkeit die Werte zusammenzufassen ist das arithmetische Mittel zu berechnen~\cite{chowdhury_zulkernine_2009}.
 Alternativ dazu kann man auch das Maximum bilden.
 Analoges gilt bei der Erfassung von Metriken auf Klassenebene unter Einbeziehung der jeweiligen Methoden der Klasse.
 
-Die Wahl des Programms zur Berechnung der Metriken hängt von der Analyse ab, die anschließenden mit den Metriken vorgenommen werden sollen.
+Die Wahl des Programms zur Berechnung der Metriken hängt von der Analyse ab, die anschließend mit den Metriken vorgenommen werden soll.
 In den Studien von \cite{alves_et_al} und \cite{chowdhury_zulkernine_2009} kam dafür das Tool \emph{Understand}\footnote{Understand Webseite: \url{https://scitools.com/features/}} zum Einsatz.
 Damit konnten alle benötigten Metriken für die Analyse erfasst werden, wenn auch einige wünschenswerte Metriken fehlten.
