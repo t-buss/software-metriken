@@ -10,6 +10,7 @@ image: aergus/latex
 build:
   script:
     - pdflatex -interaction batchmode document.tex
+    - pdflatex -interaction batchmode document.tex
   artifacts:
     paths:
       - "*.pdf"
