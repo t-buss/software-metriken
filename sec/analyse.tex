@@ -1,27 +1,26 @@
 \section{Analyse}
 \label{sec:analyse}
 Nachdem ein geeigneter Datensatz erfasst wurde, können die Daten analysiert werden.
-Für die Analyse gibt es zwei wesentliche Herangehensweisen: die Betrachtung von Korrelationsmaße und Erstellung von Klassifikatoren.
+Für die Analyse gibt es zwei wesentliche Herangehensweisen: die Betrachtung von Korrelationsmaßen und Erstellung von Klassifikatoren.
+Korrelationsmaße drücken aus, wie die Software-Metriken mit Sicherheitslücken zusammenhängen.
+Klassifikatoren entscheiden anhand der Metriken, ob eine Komponente wahrscheinlich anfällig ist oder nicht.
 Zuvor sollte festgelegt werden, welche Metriken für die Analyse verwendet werden sollen.
 % Informational approach (Wo fließen Daten hin?) vs. structual approach (Wer ruft wen auf?)
 
 \subsection{Wahl der Metriken}
 Die Auswahl der Metriken ist vielfältig.
-In \cite{alves_et_al} werden insgesamt 27 Metriken für Funktionen berechnet.
+Alves et al. berechnen insgesamt 27 Metriken für Funktionen.
 Einige davon sind CCC-Metriken, andere beziehen sich auf die Anzahl der Codezeilen oder auf das Verhältnis von Quellcode-Kommentaren zu Codezeilen.
-In der Studie aus \cite{chowdhury_zulkernine_2009} werden 21 Metriken berechnet.
-Die Forscher teilen dabei die Metriken sowohl in die CCC-Klassen, als auch in Code-Level und Design-Level ein.
-Unter Design-Level-Metriken versteht man dabei solche, die nach dem Entwurf der Software (beispielsweise anhand eines UML-Klassendiagramms) berechnet werden können.
-Implementierungsspezifische Metriken, wie der Anzahl Code-Zeilen, bezeichnen sich als Code-Level-Metriken.
+In der Studie von Chowdhury und Zulkernine werden 21 Metriken berechnet~\cite{chowdhury_zulkernine_2009}.
 Abbildung \ref{table1} zeigt einen Ausschnitt aus der Arbeit von Chowdhury und Zulkernine~\cite{chowdhury_zulkernine_2010}.
 Zu sehen sind die englische Bezeichnungen und Beschreibungen für die Komplexitätsmetriken.
 
 \begin{table}
-	\caption{Auszug aus \cite{chowdhury_zulkernine_2010}; Tabelle mit den verwendeten Metriken.}
+	\caption{Tabelle mit den verwendeten Metriken~\cite{chowdhury_zulkernine_2010}}
 	\label{table1}
 	\begin{tabular}{|p{1.6cm}|p{10.4cm}|}
 		\hline
-		Metrics & Description and Rationale  \\
+		\textbf{Metrics} & \textbf{Description and Rationale} \\
 		\hline
 		McCabe's & McCabe's cyclomatic complexity: the number of independent paths through a program unit (i.e., number of decision statements plus one).
 		For a file or class, it is the average cyclomatic complexity of the functions defined in the file or class. The higher this metric the more likely
@@ -29,7 +28,7 @@ Zu sehen sind die englische Bezeichnungen und Beschreibungen für die Komplexit�
 		\hline
 		Modified & Modified cyclomatic complexity: identical to cyclomatic complexity except that each case statement is not counted; the entire switch statement counts as 1.\\
 		\hline
-		Strict & Strict cyclomatic Complexity: identical to cyclomatic complexity except that the AND (\&\& in C/C++) and OR (|| in C/C++) logical operators are also counted as 1.\\
+		Strict & Strict cyclomatic Complexity: identical to cyclomatic complexity except that the AND (\&\& in C/C++) and OR (||in C/C++) logical operators are also counted as 1.\\
 		\hline
 		Essential & Essential cyclomatic complexity: a measure of the code structuredness by counting cyclomatic complexity after iteratively replacing all structured programming primitives with a single statement.\\
 		\hline
@@ -47,17 +46,17 @@ Zu sehen sind die englische Bezeichnungen und Beschreibungen für die Komplexit�
 \subsection{Korrelationsmaße}
 Zur Überprüfung der Hypothesen eigen sich Korrelationsmaße.
 Die Behebung einer Sicherheitslücke müsste eine Verbesserung der CCC-Metriken nach sich ziehen.
-Ein mögliches Maß für die Korrelation ist Spearmans Rangkorrelationskoeffizient~\cite{alves_et_al,chowdhury_zulkernine_2010}, da dieser keine Annahmen zur Verteilung macht.
+Ein mögliches Maß für die Korrelation ist Spearmans Rangkorrelationskoeffizient, da dieser keine Annahmen zur Verteilung macht~\cite{alves_et_al,chowdhury_zulkernine_2010}.
 Der Spearman Korrelationskoeffizient (kurz: die Korrelation) ist ein Wert zwischen -1 und +1, wobei -1 eine stark negative und +1 eine stark positive Korrelation ausdrückt.
 Die Signifikanz der Korrelation wird mit dem p-Wert ausgerückt.
 Ein p-Wert kleiner 0.05 wird als statistisch signifikant gewertet.
-Weitere Techniken, die beispielsweise in \cite{alves_et_al} verwendet werden, sind der zweiseitige t-Test, Konfidenzintervalle und der Wilcoxon Rangsummentest.
+Weitere Techniken sind der zweiseitige t-Test, Konfidenzintervalle und der Wilcoxon Rangsummentest~\cite{alves_et_al}.
 \begin{figure}
 	\includegraphics[width=\textwidth]{img/vulnerability_correlations.png}
 	\caption{Korrelationen mit Sicherheitslücken zu verschiedenen Metriken~\cite{chowdhury_zulkernine_2009}.}
 	\label{fig:correlations}
 \end{figure}
-Abbildung \ref{fig:correlations} aus der Arbeit von Chowdhury und Zulkernine zeigt die Korrelation mit Sicherheitslücken zu verschiedenen Metriken~\cite{chowdhury_zulkernine_2009}.
+Abbildung \ref{fig:correlations} zeigt die Korrelation mit Sicherheitslücken zu verschiedenen Metriken~\cite{chowdhury_zulkernine_2009}.
 Die Linien zeigen verschiedene Release-Versionen von Mozilla Firefox.
 Es lässt sich erkennen, dass die Korrelationsmuster über Versionen hinweg konsistent sind\cite{chowdhury_zulkernine_2009}.
 
@@ -67,7 +66,7 @@ Der Ansatz basiert auf bereits bekannte Korrelationen aus vorherigen Forschungse
 Er wird in \cite{chowdhury_zulkernine_2009} verwendet, um ein Framework für die Vorhersage von Sicherheitslücken zu entwickeln.
 Abbildung \ref{fig:framework} zeigt die Architektur dieses Frameworks.
 \begin{figure}
-	\includegraphics[width=\textwidth]{img/framework.png}
+	\includegraphics[width=0.5\textwidth]{img/framework.png}
 	\caption{Framework für die Vorhersage von Sicherheitslücken aus \cite{chowdhury_zulkernine_2009}}
 	\label{fig:framework}
 \end{figure}
@@ -76,18 +75,22 @@ Die Herangehensweise unterscheidet sich dahingehend von der Berechnung der Korre
 Das Problem wird als Klassifizierungsproblem auf Dateiebene aufgefasst:
 Entweder eine Datei ist anfällig für Sicherheitslücken oder nicht.
 Für die Klassifikatoren kommen verschiedene Techniken in Frage.
-Beispiele sind \emph{C4.5 Entscheidungsbäume}\cite{decision_trees}, die Weiterentwicklung \emph{Random Forests} und der \emph{Bayes Klassifikator}.
-Die in \cite{chowdhury_zulkernine_2009} für die Generierung der Klassifikatoren verwendete Bibliothek ist \emph{Waikato Environment for Knowledge Analysis (WEKA)}\footnote{WEKA Webseite: \url{https://www.cs.waikato.ac.nz/ml/weka/}} der Universität von Waikato, Neuseeland.
+Beispiele sind \emph{Entscheidungsbäume}\cite{decision_trees}, die Weiterentwicklung \emph{Random Forests} und der \emph{Bayes Klassifikator}.
+Für die Generierung der Klassifikatoren lässt sich die Bibliothek \emph{Waikato Environment for Knowledge Analysis (WEKA)}\footnote{WEKA Webseite: \url{https://www.cs.waikato.ac.nz/ml/weka/}} der Universität von Waikato, Neuseeland, verwenden~\cite{chowdhury_zulkernine_2009}.
 Sie ist Open Source und in Java implementiert, sodass sie einfach und vielseitig eingesetzt werden kann.
 
-Für die Generierung ist es notwendig, einen ausbalancierten Datensatz zu verwenden, um einseitige Klassifikatoren auszuschließen.
+Für die Generierung ist es notwendig, einen ausbalancierten Datensatz zu verwenden, um einseitige Klassifikatoren zu verhindern.
 Anschließend können die Klassifikatoren generiert werden.
 Ein Verfahren dafür ist \emph{Cross Validation}\cite{chowdhury_zulkernine_2009}.
 Der Datensatz wird in 10 "`Bins"' aufgeteilt, wovon 9 zum Trainieren des Klassifikators und einer zum Testen der Vorhersagen benutzt werden.
 Dieser Vorgang wird einige Male wiederholt.
 
 Die generierten Klassifikatoren müssen anschließend noch auf ihre Qualität überprüft werden.
-Chowdhury und Zulkernine verwenden dafür die folgenden Maße~\cite{chowdhury_zulkernine_2009}:
+Chowdhury und Zulkernine verwenden dafür die Maße \emph{Accuracy}, \emph{Recall} und \emph{FN rate}~\cite{chowdhury_zulkernine_2009}.
+Accuracy drückt aus, wie oft der Klassifikator die richtige Entscheidung getroffen hat.
+Recall drückt aus, wie viele der Sicherheitslücken erkannt wurden.
+Die FN Rate drückt aus, wie viele der Sicherheitslücken nicht erkannt wurden.
+Sie werden auf folgende Weise berechnet:
 \begin{equation}
 	Accuracy = \frac{TP+TN}{TP+FP+TN+FN}
 \end{equation}
