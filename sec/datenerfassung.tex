@@ -8,7 +8,7 @@ Für die Analyse eignen sich Open Source Projekte,
 da diese sowohl den Quellcode als auch verschiedene Issue-Tracker,
 in denen Sicherheitslücken gelistet sind,
 öffentlich zugänglich machen.
-In den Arbeiten von Chowdhury und Zulkernine~\cite{chowdhury_zulkernine_2010,chowdhury_zulkernine_2009} wird \emph{Mozilla Firefox} als Gegenstand der Fallstudien verwendet.
+In den Arbeiten von Chowdhury und Zulkernine wird \emph{Mozilla Firefox} als Gegenstand der Fallstudien verwendet~\cite{chowdhury_zulkernine_2010,chowdhury_zulkernine_2009}.
 Die Festlegung auf ein einziges Projekt limitiert jedoch die Aussagekraft der Studie.
 Daher haben Alves et al. mehrere Projekte für ihre Studie ausgewählt~\cite{alves_et_al}: 
 Mozilla Projekte (Firefox, Thunderbird und andere),
@@ -20,7 +20,7 @@ die GNU Bibliothek \texttt{glibc}.
 Informationen über Sicherheitslücken lassen sich über sog. \emph{Security Advisories} erhalten.
 Diese listen entdeckte Bugs in der Software auf, die einen sicherheitsbezogenen Kontext haben.
 Ein Eintrag in einer diesem Advisories enthält Informationen über die Sicherheitslücke, eine Bewertung der Schwere dieser Lücke und einen Link zu dem entsprechenden Bug-Tracker-Eintrag.
-Abbildung~\ref{fig:mfsa} zeigt einen Eintrag auf der \textit{Mozilla Foundation Security Advisories}\footnote{\url{https://www.mozilla.org/en-US/security/advisories/}} Webseite, die von verschiedenen Forschern verwendet werden~\cite{alves_et_al,chowdhury_zulkernine_2010}.
+Abbildung \ref{fig:mfsa} zeigt einen Eintrag auf der \textit{Mozilla Foundation Security Advisories}\footnote{\url{https://www.mozilla.org/en-US/security/advisories/}} Webseite, die von verschiedenen Forschern verwendet werden~\cite{alves_et_al,chowdhury_zulkernine_2010}.
 Für viele andere Projekte existieren ebenfalls Security Advisories.
 \begin{figure}
 	\includegraphics[width=\textwidth]{img/mfsa_example.png}
@@ -66,5 +66,5 @@ Analoges gilt bei der Erfassung von Metriken auf Klassenebene unter Einbeziehung
 
 Die Wahl des Programms zur Berechnung der Metriken hängt von der Analyse ab, die anschließend mit den Metriken vorgenommen werden soll.
 Nicht jedes Programm kann alle gewünschten Metriken berechnen und eigene Implementationen sind zeitaufwendig.
-In den Studien von \cite{alves_et_al} und \cite{chowdhury_zulkernine_2009} kam dafür das Tool \emph{Understand}\footnote{Understand Webseite: \url{https://scitools.com/features/}} zum Einsatz.
+In den Studien von Alves et al. und Chowdhury und Zulkernine kam dafür das Tool \emph{Understand}\footnote{Understand Webseite: \url{https://scitools.com/features/}} zum Einsatz~\cite{alves_et_al,chowdhury_zulkernine_2009}.
 Damit konnten alle benötigten Metriken für die Analyse erfasst werden, wenn auch einige wünschenswerte Metriken fehlten.

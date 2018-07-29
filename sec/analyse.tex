@@ -58,17 +58,17 @@ Weitere Techniken sind der zweiseitige t-Test, Konfidenzintervalle und der Wilco
 \end{figure}
 Abbildung \ref{fig:correlations} zeigt die Korrelation mit Sicherheitslücken zu verschiedenen Metriken~\cite{chowdhury_zulkernine_2009}.
 Die Linien zeigen verschiedene Release-Versionen von Mozilla Firefox.
-Es lässt sich erkennen, dass die Korrelationsmuster über Versionen hinweg konsistent sind\cite{chowdhury_zulkernine_2009}.
+Es lässt sich erkennen, dass die Korrelationsmuster über Versionen hinweg konsistent sind~\cite{chowdhury_zulkernine_2009}.
 
 \subsection{Klassifikatoren}
 Mithilfe der Metriken lassen sich auch Klassifikatoren (englisch: \emph{predictors}) erstellen.
 Der Ansatz basiert auf bereits bekannte Korrelationen aus vorherigen Forschungsergebnissen (siehe \ref{sec:ergebnisse}).
-Er wird in \cite{chowdhury_zulkernine_2009} verwendet, um ein Framework für die Vorhersage von Sicherheitslücken zu entwickeln.
+Chowdhury und Zulkernine verwenden diesen Ansatz, um ein Framework für die Vorhersage von Sicherheitslücken zu entwickeln~\cite{chowdhury_zulkernine_2009}.
 Abbildung \ref{fig:framework} zeigt die Architektur dieses Frameworks.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth]{img/framework.png}
-	\caption{Framework für die Vorhersage von Sicherheitslücken aus \cite{chowdhury_zulkernine_2009}}
+	\caption{Framework für die Vorhersage von Sicherheitslücken~\cite{chowdhury_zulkernine_2009}.}
 	\label{fig:framework}
 \end{figure}
 Die Herangehensweise unterscheidet sich dahingehend von der Berechnung der Korrelationen, dass die in anderen Studien festgestellte Korrelation der Metriken mit Sicherheitslücken nicht verwendet wurde, um Vorhersagen zu erstellen.
@@ -76,13 +76,13 @@ Die Herangehensweise unterscheidet sich dahingehend von der Berechnung der Korre
 Das Problem wird als Klassifizierungsproblem auf Dateiebene aufgefasst:
 Entweder eine Datei ist anfällig für Sicherheitslücken oder nicht.
 Für die Klassifikatoren kommen verschiedene Techniken in Frage.
-Beispiele sind \emph{Entscheidungsbäume}\cite{decision_trees}, die Weiterentwicklung \emph{Random Forests} und der \emph{Bayes Klassifikator}.
+Beispiele sind \emph{Entscheidungsbäume}, die Weiterentwicklung \emph{Random Forests} und der \emph{Bayes Klassifikator}~\cite{decision_trees}.
 Für die Generierung der Klassifikatoren lässt sich die Bibliothek \emph{Waikato Environment for Knowledge Analysis (WEKA)}\footnote{WEKA Webseite: \url{https://www.cs.waikato.ac.nz/ml/weka/}} der Universität von Waikato, Neuseeland, verwenden~\cite{chowdhury_zulkernine_2009}.
 Sie ist Open Source und in Java implementiert, sodass sie einfach und vielseitig eingesetzt werden kann.
 
 Für die Generierung ist es notwendig, einen ausbalancierten Datensatz zu verwenden, um einseitige Klassifikatoren zu verhindern.
 Anschließend können die Klassifikatoren generiert werden.
-Ein Verfahren dafür ist \emph{Cross Validation}\cite{chowdhury_zulkernine_2009}.
+Ein Verfahren dafür ist \emph{Cross Validation}~\cite{chowdhury_zulkernine_2009}.
 Der Datensatz wird in 10 "`Bins"' aufgeteilt, wovon 9 zum Trainieren des Klassifikators und einer zum Testen der Vorhersagen benutzt werden.
 Dieser Vorgang wird einige Male wiederholt.
 
