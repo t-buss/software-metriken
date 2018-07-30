@@ -55,6 +55,8 @@ Weitere Techniken sind der zweiseitige t-Test, Konfidenzintervalle und der Wilco
 \subsection{Klassifikatoren}
 Mithilfe der Metriken lassen sich auch Klassifikatoren (englisch: \emph{predictors}) erstellen.
 Der Ansatz basiert auf bereits bekannte Korrelationen aus vorherigen Forschungsergebnissen (siehe \ref{sec:ergebnisse}).
+Hierbei wird aus einer Teilmenge der gesammelten Daten ein Modell erstellt, welches die Sicherheitslücken vorhersagen soll.
+Der Rest der Daten wird dann für die Verifikation der Klassifikatoren verwendet.
 Chowdhury und Zulkernine verwenden diesen Ansatz, um ein Framework für die Vorhersage von Sicherheitslücken zu entwickeln~\cite{chowdhury_zulkernine_2009}.
 Abbildung \ref{fig:framework} zeigt die Architektur dieses Frameworks.
 \begin{figure}
@@ -63,7 +65,6 @@ Abbildung \ref{fig:framework} zeigt die Architektur dieses Frameworks.
 	\caption{Framework für die Vorhersage von Sicherheitslücken~\cite{chowdhury_zulkernine_2009}.}
 	\label{fig:framework}
 \end{figure}
-Die Herangehensweise unterscheidet sich dahingehend von der Berechnung der Korrelationen, dass die in anderen Studien festgestellte Korrelation der Metriken mit Sicherheitslücken nicht verwendet wurde, um Vorhersagen zu erstellen.
 
 Das Problem wird als Klassifizierungsproblem auf Dateiebene aufgefasst:
 Entweder eine Datei ist anfällig für Sicherheitslücken oder nicht.
